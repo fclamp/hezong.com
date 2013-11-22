@@ -1,0 +1,28 @@
+<include file="public:header" />
+  <div class="pad-10">
+    <div class="col-tab">
+    
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on">缓存管理</li>
+      </ul>
+      
+      <div id="div_setting_1" class="contentList pad-10">
+          <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+                <td width="150">全站缓存</td>
+                <td align="left">
+                	<if condition="is_access('cache','clearCache') eq '1'">
+                	<a href="{:U('cache/clearCache',array('id'=>1))}" class="button">更新</a>
+                	</if>
+                </td>
+            </tr>
+            
+        </table>
+      </div>
+     
+      <div class="bk15"></div>
+
+    </div>
+
+  </div>
+</body></html>

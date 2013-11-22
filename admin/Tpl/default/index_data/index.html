@@ -1,0 +1,187 @@
+<tagLib name="Fclamp" />
+<include file="public:header" />
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+        		<if condition="is_access('index_data','add') eq '1'">
+                   <a class="cat" href="javascript:add()" style="color:#fff;">添加新信息</a>
+                 </if>
+            
+            	<select name="c_id">
+            		<option value="0">--区块--</option>
+            	 <volist name="data_cates" id="val" >
+            	 	<option value="{$key}" <if condition="$c_id == $key">selected</if>>{$val['name']}</option>
+            	 </volist>
+                </select>
+  
+             	 <select name="status">
+             	 	<volist name="status_types" id="val" >
+             	 		<option value="{$key}" <if condition="$key eq $post_status">selected="selected"</if>>{$val}</option>
+             	 	</volist>
+             	 </select>
+             	 
+             	 <select name="keyword_type">
+             	 	<option>--关键字类别--</option>
+             	 	<volist name="keyword_types" id="val" >
+             	 		<option value="{$key}" <if condition="$key eq $keyword_type">selected="selected"</if>>{$val}</option>
+             	 	</volist>
+             	 </select>
+             	 
+             	 
+             	 关键字 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+                <input type="hidden" name="m" value="index_data" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+
+    <form id="myform" name="myform" action="{:u('index_data/delete')}" method="post" onsubmit="return check();">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width=50>ID<input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>           
+                <th width=260>标题</th>
+                <th width=100>区块</th>
+                <th width=100>发布人</th>
+                <th width=60>{:L('sort')}</th>
+                <th width="100">{:L('status')}</th>
+				<th width="80">操作</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="list" id="val" >
+        <tr>       
+		 	<td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>           
+            <td align="left">
+            	{$val.title}
+            </td>
+           	
+           	<td align="center">{$val.catid}</td>
+            
+            <td align="left">{$val.author}</td>
+            
+            <td align="center"><input  type="text" class="input-text-c input-text" value="{$val.sort}" id="sort_{$val.id}" onblur="sort({$val.id},'sort',this.value)" size="4" name="listorders[{$val.id}]"></td>
+      		
+      		<td align="center" onclick="status({$val.id},'status')" id="status_{$val.id}" title="改变状态">
+      			<img src="__ROOT__/statics/images/status_{$val.status}.gif" />
+      			(<span class="index_data_status_{$val['id']}">{$status_types[$val['status']]}</span>)
+      		</td>
+			
+			<td align="center">
+			
+				<a class="blue" href="{$val['url']}" target="_blank">查看</a>
+					
+				<if condition="is_access('index_data','edit') eq '1'">	
+				<a class="blue" href="javascript:edit({$val.id},'{$val.title}')">编辑</a>
+				</if>
+			</td>
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+    	
+    	<div id="pages">{$page}</div>
+    </div>
+
+    </div>
+    </form>
+</div>
+<script language="javascript">
+
+
+function add() {
+	var lang_add = "添加新信息";
+	window.top.art.dialog({id:'add'}).close();
+	window.top.art.dialog({
+		title:lang_add,
+		id:'add',
+		iframe:'?m=index_data&a=add',width:'800',height:'580'
+		}, 
+		function()
+		{
+			var d = window.top.art.dialog({id:'add'}).data.iframe;
+			if(d.document.getElementById('dosubmit')){
+				var form=d.document.getElementById('dosubmit');
+				form.click();return false;
+			}else{
+				window.top.art.dialog({id:'add'}).close()
+			}
+		}, 
+		function()
+		{
+			window.top.art.dialog({id:'add'}).close()
+		});
+
+}
+
+
+function edit(id, name) {
+	var lang_edit = "编辑文章";
+	window.top.art.dialog({id:'edit'}).close();
+	window.top.art.dialog({
+		title:lang_edit+'--'+name,
+		id:'edit',
+		iframe:'?m=index_data&a=edit&id='+id,
+		width:'800',
+		height:'580'}, 
+		function(){
+			var d = window.top.art.dialog({id:'edit'}).data.iframe;
+			d.document.getElementById('dosubmit').click();
+			return false;
+			}, 
+			function(){
+				window.top.art.dialog({id:'edit'}).close()
+				}
+			);
+}
+
+
+var lang_cate_name = "资讯信息！";
+function check(){
+	if($("#myform").attr('action') == '{:u("index_data/delete")}') {
+		var ids='';
+		$("input[name='id[]']:checked").each(function(i, n){
+			ids += $(n).val() + ',';
+		});
+
+		if(ids=='') {
+			window.top.art.dialog({content:lang_please_select+lang_cate_name,lock:true,width:'200',height:'50',time:3},function(){});
+			return false;
+		}
+	}
+	return true;
+}
+
+function status(id,type){
+    $.get("{:u('index_data/status')}", { id: id, type: type }, function(jsondata){
+		var return_data  = eval("("+jsondata+")");
+		$("#"+type+"_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif');
+		var s=['草稿','已发布']
+		$('.index_data_status_'+id).text(s[return_data.data]);
+		
+		
+	}); 
+}
+//排序方法
+function sort(id,type,num){
+    
+    $.get("{:u('index_data/sort')}", { id: id, type: type,num:num }, function(jsondata){
+        
+		$("#"+type+"_"+id+" ").attr('value', jsondata.data);
+	},'json'); 
+}
+</script>
+</body>
+</html>

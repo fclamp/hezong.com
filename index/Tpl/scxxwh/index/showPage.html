@@ -1,0 +1,23 @@
+<include file="public:header"/>
+	<div class="content">
+		<div class="section-layout clearfix">
+			<include file="public:left_bar"/>
+			<div class="m-content">
+				<div class="detail-wrap">
+					<div class="crumbs"><a href="/">首页</a>{$show_page_uri}</div>
+					<div class="detail-header">
+						<h3>{$info.title}</h3>
+						<p><span class="info-user">{$info.author}</span><span class="info-time">{$info.push_time}</span></p>
+					</div>
+					<div class="detail-text">
+						{$info.info}
+					</div>
+					<div class="q-link">
+						<if condition="$more['down']"><em>下一条：<a href="/?a=showPage&m=index&id={$more['down']['id']}">{$more['down']['title']}</a></em></if><if condition="$more['up']"><span>上一条：<a href="/?a=showPage&m=index&id={$more['up']['id']}">{$more['up']['title']}</a></span></if>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<include file="public:footer"/>

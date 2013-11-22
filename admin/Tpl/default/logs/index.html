@@ -1,0 +1,65 @@
+<tagLib name="fclamp" />
+<include file="public:header" />
+<div class="pad-lr-10">
+	<form name="searchform" action="" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+	            <td>
+		            <div class="explain-col"> 
+				                      操作时间：        
+						<fclamp:calendar name="s_time" value="{$s_time}">{$time_start}</fclamp:calendar>
+		                -   
+						<fclamp:calendar name="e_time" more="true" value="{$e_time}">{$time_end}</fclamp:calendar>
+		            	<select name="search_type">
+		            		<option value="uname" <if condition="$search_type eq 'uname'"> selected="selected"</if> >操作者</option>
+		            		<option value="uid" <if condition="$search_type eq 'uid'"> selected="selected"</if> >操作者ID</option>
+		            		<option value="msg" <if condition="$search_type eq 'msg'"> selected="selected"</if>>事件</option>
+		            	</select> 
+						&nbsp;关键字 :
+		                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+		                <input type="hidden" name="m" value="logs" />
+		                <input type="submit" name="search" class="button" value="搜索" />
+		        	</div>
+	            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>	
+   
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width=50>ID</th>     
+                <th width=60>操作者ID</th> 
+				<th width=50>操作者</th> 
+				<th>事件</th>              
+				<th width=150>操作时间</th> 	
+				<th width=80>IP地址</th>	
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="logs_list" id="val" key="k" >
+        <tr>
+        	<td align="center">{$val.id}</td>                     
+            <td align="center">{$val.uid}</td>
+			<td align="center">{$val.uname}</td>			
+			<td align="center">{$val.msg}</td>      		
+			<td align="center">{$val.add_time|date="Y-m-d H:i:s",###}</td>
+			<td>{$val.ip}</td>
+        </tr>
+        </volist>
+    	</tbody>
+    </table>
+    <div class="btn">
+		<div id="pages">{$page}</div>
+    </div>
+    </div>
+
+</div>
+<script language="javascript">
+
+</script>
+</body>
+</html>

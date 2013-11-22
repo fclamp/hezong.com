@@ -1,0 +1,117 @@
+<tagLib name="Fclamp" />
+<include file="public:header" />
+<script type="text/javascript">		
+$(function(){
+	$("#add_attatch").click(function(){
+	$("#attatch_tr").clone().prependTo($("#attatch_tr").parent());
+	});
+})
+</script>
+
+<form action="{:u('article/add')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',2,1);">基本信息</li>
+        <li id="tab_setting_2" onclick="SwapTab('setting','on','',2,2);">详情信息</li>
+      </ul>
+      <div id="div_setting_1" class="contentList pad-10">
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+          <tr>
+            <th width="100">标题:</th>
+            <td><input type="text" name="title" id="title" class="input-text" size="60"></td>
+          </tr>
+
+          <tr>
+            <th>栏目:</th>
+            <td>
+            	<select name="catid">
+            	{:tree_select_option($cate_list,'')}
+              </select>
+              
+           </td>
+          </tr>
+
+          <tr>
+          	<th>列表图片 :</th>
+            <td><input type="file" name="img" class="input-text"  style="width:200px;" />
+     			(格式：{$fileExts})
+            </td>
+          </tr>        
+          
+          <tr>
+            <th>简介:</th>
+            <td>
+            	
+            	<Fclamp:editor id="abst" name="abst" type="KINDEDITOR"  simple="simple" style="width:100%;height:180px;" ></Fclamp:editor>
+            </td>
+          </tr>        
+          
+          <tr>
+            <th>排序 :</th>
+            <td><input type="text" name="sort" class="input-text" size="8"></td>
+          </tr>
+     
+          
+         <tr>
+            <th>{:L('status')} :</th>
+            <td><input type="radio" name="status" class="radio_style" value="0">
+              &nbsp;草稿&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="status" class="radio_style" value="1" checked="checked">
+              &nbsp;发布
+              </td>
+          </tr>
+          
+          
+          <tr>
+        	<th>发布时间:</th>
+        	<td>
+            	<Fclamp:calendar name="push_time" ifformat="%Y-%m-%d %H:%m" value="{$push_time}"></Fclamp:calendar>
+            </td>
+          </tr>          
+        </table>
+      </div>
+      
+      <div id="div_setting_2" class="contentList pad-10 hidden">
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+        
+          <tr>
+            <th>内容 </th>
+            <td>
+            	<Fclamp:editor id="info" name="info" type="KINDEDITOR" style="width:100%;height:350px;" upload_="{:u('article/article_upload_img')}"></Fclamp:editor>
+            	            	
+			</td>
+          </tr>        
+        
+        
+           <tr>
+          	<th>附件 </th>
+            <td><input type="file" name="attachment" class="input-text"  style="width:200px;" />
+     			(格式：请打包后再上传，支持包:zip rar tar，最大 5M)
+            </td>
+          </tr>       
+
+        </table>
+      </div>
+      <div class="bk15"></div>
+      <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+    </div>
+  </div>
+</form>
+<script type="text/javascript">
+
+
+function SwapTab(name,cls_show,cls_hide,cnt,cur){
+    for(i=1;i<=cnt;i++){
+		if(i==cur){
+			 $('#div_'+name+'_'+i).show();
+			 $('#tab_'+name+'_'+i).attr('class',cls_show);
+		}else{
+			 $('#div_'+name+'_'+i).hide();
+			 $('#tab_'+name+'_'+i).attr('class',cls_hide);
+		}
+	}
+}
+
+</script>
+</body></html>

@@ -1,0 +1,87 @@
+<include file="public:header" />
+<form id="myform" name="myform" action="{:u('setting/edit')}" enctype="multipart/form-data" method="post">
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',3,1);">网站信息</li>
+      </ul>
+      
+      <div id="div_setting_1" class="contentList pad-10">
+          <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+              <th width="120">{:L('site_name')} :</th>
+              <td><input type="text" name="site[site_name]" size="80" value="{$set.site_name}"></td>
+            </tr>
+            <tr>
+              <th width="120">{:L('site_domain')} :</th>
+              <td><input type="text" name="site[site_domain]" size="80" value="{$set.site_domain}"></td>
+            </tr>    
+            <tr>
+              <th width="120">{:L('site_title')} :</th>
+              <td><input type="text" name="site[site_title]" size="80" value="{$set.site_title}"></td>
+            </tr> 
+
+            <tr>
+              <th width="120">{:L('site_keyword')} :</th>
+              <td><input type="text" name="site[site_keyword]" size="80" value="{$set.site_keyword}"></td>
+            </tr>
+            
+            <tr>
+              <th width="120">{:L('site_description')} :</th>
+              <td><input type="text" name="site[site_description]" size="80" value="{$set.site_description}"></td>
+            </tr>
+
+			<tr>
+              <th width="120">网站右下脚信息 :</th>
+              <td>
+              	<textarea name="site[site_rightinfo]" style="width: 550px; height: 50px;">{$set.site_rightinfo}</textarea>
+              	<span style="color:red;">一行存一条信息</span>
+              </td>
+            </tr>             
+
+			<tr>
+              <th width="120">网站脚底信息 :</th>
+              <td>
+              	<textarea name="site[site_bottominfo]" style="width: 550px; height: 50px;">{$set.site_bottominfo}</textarea>
+              	<span style="color:red;">一行存一条信息</span>
+              </td>
+            </tr> 
+
+			<tr>
+              <th width="120">{:L('check_code')} :</th>
+              <td>
+                <input type="radio" <if condition="$set.check_code eq '1'">checked="checked"</if> onclick="" value="1" name="site[check_code]" /> 开启 &nbsp;&nbsp;
+                <input type="radio" <if condition="$set.check_code eq '0'">checked="checked"</if> onclick="" value="0" name="site[check_code]" /> 关闭 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
+              </td>
+            </tr>
+					
+        </table>
+      </div>
+  
+        
+      <div class="bk15"></div>
+
+      <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+
+    </div>
+
+  </div>
+
+</form>
+
+<script type="text/javascript">
+function SwapTab(name,cls_show,cls_hide,cnt,cur){
+    for(i=1;i<=cnt;i++){
+		if(i==cur){
+			 $('#div_'+name+'_'+i).show();
+			 $('#tab_'+name+'_'+i).attr('class',cls_show);
+		}else{
+			 $('#div_'+name+'_'+i).hide();
+			 $('#tab_'+name+'_'+i).attr('class',cls_hide);
+		}
+	}
+}
+
+</script>
+
+</body></html>

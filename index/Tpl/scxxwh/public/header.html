@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>{$SITEINFO['site_title']}<if condition="$page_title">-{$page_title}</if></title>
+<meta name="keywords" content="{$SITEINFO['site_keyword']}">
+<meta name="description" content="{$SITEINFO['site_description']}">
+
+<link type="text/css" rel="stylesheet" href="__ROOT__/statics/scxxwh/css/style.css">
+</head>
+
+<body>
+	<div class="header">
+		<div class="head-main">
+			<a class="logo" href="/"><img alt="" src="__ROOT__/statics/scxxwh/images/logo.png"></a>
+		</div>
+		<div class="nav">
+			<ul>
+				<li <if condition="$is_index eq 'yes'">class="current"</if>><a href="/">首页</a></li>
+				<volist name="ALLLinks['tLinks']" id="val" >
+				<li <if condition="($ACTION_NAME eq $val['a'] and $MODULE_NAME eq $val['m']) and ($_GET['id'] eq $val['uri_id'] or $_GET['cateid'] eq $val['uri_id'])">class="current"</if> ><a href="{$val['url']}">{$val['name']}</a></li>
+				</volist>
+			</ul>
+		</div>
+		
+		<if condition="$is_index eq 'yes' and $indexInfo1[1]">
+			<div id="slide" class="slide">
+				<ul class="slide-photo">
+				<volist name="indexInfo1[1]" id="val" >
+					<li>
+						<a href="{$val.url}">
+							<img alt="" width="630" height="360" src="{$val.img}">
+						</a>
+						<h3>{$val.title}</h3>
+						<h4>{$val.title2}</h4>
+						<p class="summary">{$val.abst}</p></li>
+				</volist>
+				</ul>
+				<ul class="slide-triggers">
+					<volist name="indexInfo1[1]" id="val" >
+					<li <if condition="$key eq 0">class="current"</if>></li>
+					</volist>
+				</ul>
+			</div>		
+		</if>
+		
+	</div>

@@ -1,0 +1,106 @@
+<tagLib name="Fclamp" />
+<include file="public:header" />
+<script type="text/javascript">		
+$(function(){
+	$("#add_attatch").click(function(){
+	$("#attatch_tr").clone().prependTo($("#attatch_tr").parent());
+	});
+})
+</script>
+
+<form action="{:u('index_data/edit')}" method="post" name="myform" id="myform"  enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+    <div class="col-tab">
+      
+      <div id="div_setting_1" class="contentList pad-10">
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+          <tr>
+            <th width="100">标题:</th>
+            <td><input type="text" name="title" id="title" class="input-text" size="60" value="{$index_info.title}"></td>
+          </tr>
+
+          <tr>
+            <th width="100">副标题:</th>
+            <td><input type="text" name="title2" id="title" class="input-text" size="60" value="{$index_info.title2}"></td>
+          </tr>
+          
+          <tr>
+            <th width="100">连接:</th>
+            <td><input type="text" name="url" id="url" class="input-text" size="60" value="{$index_info.url}">
+            	<br>(格式：注意使用绝对URL，比如：http://www.chengdu.cn/)
+            </td>
+          </tr>          
+
+          <tr>
+            <th>内容区块:</th>
+            <td>
+            	<select name="catid">
+            	 <volist name="cate_list" id="val" >
+            	 	<option value="{$key}" <if condition="$index_info['catid'] eq $key">selected</if>>{$val['name']}</option>
+            	 </volist>
+                </select>
+              
+           </td>
+          </tr>
+          
+          <tr>
+            <th>内容类型:</th>
+            <td>
+            	<select name="type">
+            	 <volist name="type_list" id="val" >
+            	 	<option value="{$key}" <if condition="$index_info['type'] eq $key">selected</if>>{$val}</option>
+            	 </volist>
+                </select>
+              
+           </td>
+          </tr>          
+          
+
+          <tr>
+          	<th>图片 :</th>
+            <td><input type="file" name="img" class="input-text"  style="width:200px;" />
+     			(格式：{$fileExts})
+            </td>
+          </tr>        
+            <if condition="$index_info.img !=''">       
+          		<tr>
+          			<td></td>
+          			<td><img src="{$index_info.img}" style="width:230px;height:200px;"></td>
+          		</tr>
+          	</if>         
+          
+          <tr>
+            <th>描述:</th>
+            <td>
+            	
+            	<Fclamp:editor id="abst" name="abst" type="KINDEDITOR"  simple="simple" style="width:100%;height:180px;" >{$index_info.abst}</Fclamp:editor>
+            </td>
+          </tr>        
+          
+          <tr>
+            <th>排序 :</th>
+            <td><input type="text" name="sort" class="input-text" size="8" value="{$index_info.sort}"></td>
+          </tr>
+     
+          
+         <tr>
+            <th>{:L('status')} :</th>
+            <td><input type="radio" name="status" class="radio_style" value="0" <if condition="$index_info.status eq '0'">checked="checked" </if>>
+              &nbsp;草稿&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="status" class="radio_style" value="1" <if condition="$index_info.status eq '1'">checked="checked" </if>>
+              &nbsp;发布
+              </td>
+          </tr>
+          
+          
+          
+          
+               
+        </table>
+      </div>
+      <input type="hidden" name="id" value="{$index_info.id}">
+      <div class="btn"><input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div>
+    </div>
+  </div>
+</form>
+</body></html>
