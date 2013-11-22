@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>{$SITEINFO['site_title']}<if condition="$page_title">-{$page_title}</if></title>
+<meta name="keywords" content="{$SITEINFO['site_keyword']}">
+<meta name="description" content="{$SITEINFO['site_description']}">
+
+<link type="text/css" rel="stylesheet" href="__ROOT__/statics/myweb/css/style.css">
+</head>
+
+<body>
+
+	<div class="header">
+    	<div class="w_1000 ">
+       		<center><img class="logo" alt=""  src="__ROOT__/statics/myweb/images/logo.png"/></center>
+        </div>	
+        <div class="nav">
+        	<div class=" nav_bar w_1000">
+            	<ul class="nav_li">
+                	
+                	<li <if condition="$is_index eq 'yes'">class="current"</if>><a href="/">首页</a></li>
+					<volist name="ALLLinks['tLinks']" id="val" >
+					<li <if condition="($ACTION_NAME eq $val['a'] and $MODULE_NAME eq $val['m']) and ($_GET['id'] eq $val['uri_id'] or $_GET['cateid'] eq $val['uri_id'])">class="current"</if> ><a href="{$val['url']}">{$val['name']}</a></li>
+					</volist>
+                </ul>
+            </div>
+        </div>
+    </div>

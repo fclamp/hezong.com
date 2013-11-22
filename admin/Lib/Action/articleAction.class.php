@@ -235,6 +235,7 @@ class articleAction extends baseAction
 			$data ['add_time'] = time ();
 			$data ['uid'] = $this->admin_uid;
 			$data ['push_time'] = strtotime ( $data ['push_time'] );
+			$data ['from'] = htmlspecialchars($data['from']);
 			//简单去掉JS
 			$rea = array(
 				'/<\s*s\s*c\s*r\s*i\s*p\s*t\s*>.*?<\s*\/s\s*c\s*r\s*i\s*p\s*t\s*>/i',
@@ -363,6 +364,7 @@ class articleAction extends baseAction
 			$data ['author'] = $this->admin_name;
 			$data ['uid'] = $this->admin_uid;
 			$data ['push_time'] = strtotime ( $data ['push_time'] );
+			$data ['from'] = htmlspecialchars($data['from']);
 			//简单去掉JS
 			$rea = array(
 				'/<\s*s\s*c\s*r\s*i\s*p\s*t\s*>.*?<\s*\/s\s*c\s*r\s*i\s*p\s*t\s*>/i',

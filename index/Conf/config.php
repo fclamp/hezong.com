@@ -4,7 +4,7 @@ $array = array(
 		'DEFAULT_MODULE'=>'index', //默认控制器
 		'URL_MODEL' => 1,		
 		'URL_HTML_SUFFIX'=>'html',
-		'DEFAULT_THEME'=>'scxxwh', //皮肤设置
+		'DEFAULT_THEME'=>'myweb', //皮肤设置
         //缓存配置
         'DATA_CACHE_TYPE' => 'file', // 数据缓存方式 文件
         'DATA_CACHE_TIME' => 0, // 数据缓存时间

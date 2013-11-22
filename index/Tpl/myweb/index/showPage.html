@@ -1,0 +1,42 @@
+<include file="public:header2"/>
+
+
+
+    <div class="main">
+   		<div class="top_pic"></div>
+        <div class="w_1000">
+        	<div class="sider_nav">
+            	<ul class="sider_bar">
+
+                	<li <if condition="$is_index eq 'yes'">class="current"</if>><a href="/">首页</a></li>
+                	
+					<volist name="ALLLinks['tLinks']" id="val" >
+					
+					<li <if condition="$info['catid'] eq $val['uri_id']">class="current"</if> ><a href="{$val['url']}">{$val['name']}</a></li>
+					
+					</volist>
+
+                </ul>
+            </div>
+            <div class="lister">
+            <div class="map"><a target="_blank" href="/">首页</a>{$show_page_uri}</div>
+       	    <div class="detail_content summary">
+                	<div class="hd">
+                    	<h1>{$info.title}</h1>
+                        <p>来源：{$info.from}&nbsp;&nbsp;时间：{$info.push_time}</p>
+                    </div>
+                    <div class="bd">
+						{$info.info}
+                    </div>
+              </div>
+       	    <div class="others">
+       	    	<if condition="$more['down']"><em>下一篇：<a target="" href="/?a=showPage&m=index&id={$more['down']['id']}">{$more['down']['title']}</a></em></if>
+				<if condition="$more['up']"><span>上一篇：<a target="" href="/?a=showPage&m=index&id={$more['up']['id']}">{$more['up']['title']}</a></span></if>
+            </div>
+            </div>
+        </div>
+    </div>
+ 	<div class="clear"></div>
+
+
+<include file="public:footer2"/>

@@ -21,7 +21,7 @@ class baseAction extends Action
 	{		
 		include ROOT_PATH . '/includes/lib_common.php';
 		
-		$this->default_img  = ROOT_URL.'/statics/scxxwh/images/default.png';
+		$this->default_img  = ROOT_URL.'/statics/myweb/images/default.png';
 		
 		$this->article_mode = D ( 'article' );
 		$this->article_data_mode = D ( 'article_data' );
@@ -53,7 +53,8 @@ class baseAction extends Action
 					$vs = preg_replace('/\s/','&nbsp;',$vs,-1,$c_n);					
 					if($val['name']=='site_bottominfo' and $n==$k+1)
 					{			
-						$s .= '<p>'.$vs.' 网站构建：<a href="http://www.chengdu.cn">成都全搜索技术中心</a><p>';
+						$s .= '<p>'.$vs.'<p>';
+						$s .= '<p>24点科技技术&nbsp;承办</p>';
 					}else
 					{
 						$s .= '<p>'.$vs.'<p>';

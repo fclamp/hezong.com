@@ -16,11 +16,10 @@ class index_dataAction extends baseAction
 	
 	//内容区块
 	private $data_cates = array(
-		'1'=>array('name'=>'幻灯片','imgSize'=>array(680,400),),
-		'2'=>array('name'=>'研究会介绍','imgSize'=>array(350,200)),
-		'3'=>array('name'=>'新闻活动','imgSize'=>array(200,150)),
-		'4'=>array('name'=>'右边栏','imgSize'=>array(350,150)),
-		'5'=>array('name'=>'会员展示','imgSize'=>array(300,250))
+		'1'=>array('name'=>'幻灯片','imgSize'=>array(2000,650),),
+		'2'=>array('name'=>'企业概况','imgSize'=>array(400,200)),
+		'3'=>array('name'=>'企业动态','imgSize'=>array(200,150)),
+		'4'=>array('name'=>'工程案例','imgSize'=>array(200,200)),
 	
 	);
 	//内容特点

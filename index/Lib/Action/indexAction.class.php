@@ -24,14 +24,14 @@ class indexAction extends baseAction
 	 * 
 	 * 首页展示
 	 * @internal
-	 * 1幻灯片;2研究会介绍;3新闻活动;4右边栏;5会员展示'
+	 * 1幻灯片;2企业概况;3企业动态;4工程案例'
 	 */
 	function index()
 	{
 		
 		$list = array();
-		//幻灯、介绍、右栏 
-		$tpl = $this->index_mode->where('status=1 and catid in(1,2,4)')->order('sort desc,id desc')->select();
+		//1幻灯片;2企业概况;3企业动态;4工程案例'
+		$tpl = $this->index_mode->where('status=1 and catid in(1,2,3,4)')->order('sort desc,id desc')->select();
 		
 		foreach ($tpl as $v)
 		{
@@ -42,6 +42,9 @@ class indexAction extends baseAction
 			}elseif($v['catid']==2)
 			{
 				$v['abst'] = str_replace('href','class="c-blue" href',$v['abst']);
+			}elseif($v['catid']==4)
+			{
+				$v['title'] = my_sub_char($v['title'],26);
 			}
 			
 			
@@ -50,32 +53,6 @@ class indexAction extends baseAction
 		}
 		
 		$this->assign('indexInfo1',$list);
-		
-		
-		//新闻活动 、会员展示
-		$list = array();
-		$tpl = $this->index_mode->where('status=1 and catid in(3,5)')->order('sort desc,id desc')->select();
-		
-		foreach ($tpl as $v)
-		{
-			$v['img'] = empty($v['img']) ? $this->default_img : $v['img'];
-			if($v['catid']==3)
-			{
-				$v['abst'] = str_replace('href','class="c-blue" href',$v['abst']);
-			}
-			
-			$list[$v['catid']][] = $v;
-		}
-		
-		if(!empty($list[3][0]))
-		{
-			$top_news = $list[3][0];
-			unset($list[3][0]);
-			$this->assign('top_news',$top_news);
-		}
-		
-		$this->assign('indexInfo2',$list);		
-		
 		
 		$this->assign('is_index','yes');
 		
@@ -132,7 +109,7 @@ class indexAction extends baseAction
 			$count = $this->article_mode->query ( $sql );
 			if (! empty ( $count [0] ['num'] ))
 			{
-				$p = $this->pager ( $count [0] ['num'], 6 );
+				$p = $this->pager ( $count [0] ['num'], 25 );
 				$order = 'sort desc,push_time desc';
 				$limit = $p->firstRow . ',' . $p->listRows;
 				$sql = "select id,catid,title,push_time,abst,img,author,attachment from $article_table where $where  order by $order limit $limit ";
@@ -141,7 +118,7 @@ class indexAction extends baseAction
 				
 				foreach ($list as $k=>$v)
 				{
-					$v['push_time'] = date('Y-m-d H:i:s',$v['push_time']);
+					$v['push_time'] = date('Y-m-d',$v['push_time']);
 					$v['title'] = htmlspecialchars(my_sub_char($v['title'],69));
 					$v['url'] = '/?a=showPage&m=index&id='.$v['id'];
 					$v['abst'] = my_sub_char($v['abst'],260);
@@ -228,7 +205,7 @@ class indexAction extends baseAction
 		
 		if (! empty ( $info ))
 		{
-			$info['push_time'] = date('Y-m-d H:i:s',$info['push_time']);
+			$info['push_time'] = date('Y-m-d',$info['push_time']);
 			
 			//栏目
 			if ($category)
@@ -237,6 +214,10 @@ class indexAction extends baseAction
 			} else
 			{
 				$_GET ['cateid'] = $info ['catid'];
+				
+				//当前栏目 下
+				$this->assign('c_c_p_id',$_GET ['cateid']);
+				
 				$category_mode = D ( 'category' );
 				$category_list = $this->get_cate_comm ( $category_mode, 0, 0, True );			
 				$this->getCategoryInfo ($category_list);

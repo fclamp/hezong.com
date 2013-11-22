@@ -1,0 +1,36 @@
+<include file="public:header2"/>
+
+
+
+    <div class="main">
+   		<div class="top_pic"></div>
+        <div class="w_1000">
+        	<div class="sider_nav">
+            	<ul class="sider_bar">
+            	
+                	<li <if condition="$is_index eq 'yes'">class="current"</if>><a href="/">首页</a></li>
+					<volist name="ALLLinks['tLinks']" id="val" >
+					<li <if condition="($ACTION_NAME eq $val['a'] and $MODULE_NAME eq $val['m']) and ($_GET['id'] eq $val['uri_id'] or $_GET['cateid'] eq $val['uri_id'])">class="current"</if> ><a href="{$val['url']}">{$val['name']}</a></li>
+					</volist>
+
+
+                </ul>
+            </div>
+            <div class="lister">
+            	<div class="map"><a target="_blank" href="/">首页</a>{$show_page_uri}</div>
+            	<ul class="list-f14 skin-a">
+            	<volist name="list" id="val" >
+                	<li><em>{$val.push_time}</em><a target="" href="{$val.url}">{$val.title}</a></li>
+				</volist>
+                </ul>
+                <div class="pages">
+                	{$page}
+                </div>
+            </div>
+        </div>
+    </div>
+ 	<div class="clear"></div>
+
+
+
+<include file="public:footer2"/>

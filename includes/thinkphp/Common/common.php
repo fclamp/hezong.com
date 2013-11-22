@@ -65,6 +65,7 @@ function get_avalinks($fields='*')
 	$array = array('tLinks'=>array(),'bLinks'=>array(),'flinks'=>array());
 	$mode = D ( 'link' );
 	$res = $mode->where ('status=1')->field($fields)->order('sort desc,id desc')->select();
+	
 	foreach ($res as $v)
 	{
 		//解析出a,m

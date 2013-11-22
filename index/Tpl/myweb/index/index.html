@@ -1,0 +1,150 @@
+<include file="public:header"/>
+
+
+    <div class="main">
+      <div id="slide" class="magic">
+      	<img class="prev" src="__ROOT__/statics/myweb/images/back_03.png" />
+        <img class="next" src="__ROOT__/statics/myweb/images/before_03.png" />
+        <ul class="slide-photo">
+        
+        <volist name="indexInfo1['1']" id="val" >
+            <li style="background:url('{$val.img}') center 0 no-repeat;"></li>
+		</volist>
+
+        </ul>
+       
+        <ul class="slide-info">
+        
+         <volist name="indexInfo1['1']" id="val" >
+          <li>
+           <h1><a href="{$val.url}">{$val.title}</a></h1>
+           <h3>{$val.title2}</h3>
+         </li>
+         </volist>
+
+        </ul>
+        
+        <div class="slide-triggers">
+        	<span class="triggers-wrap">
+			        	
+        	</span>
+        </div>
+      </div>
+        <div class="wrap w_1000">
+        <div class="col-left">
+        	<div id="kg" class="box">
+            <div class="hd"><span>企业概况</span></div>
+            <div class="bd">
+            	<img class="pic" alt="" src="{$indexInfo1[2][0]['img']}" />
+                <p class="summary">{$indexInfo1[2][0]['abst']}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-centent">
+        	<div class="box">
+            <div class="hd"><span>企业动态</span></div>
+            <div class="bd">
+            	<ul class="list-f14">
+            	<volist name="indexInfo1['3']" id="val" >
+                	<li><a target="" href="{$val.url}">{$val.title}</a></li>
+				</volist>
+                </ul>
+            </div>
+          </div>
+        </div>
+		<div class="col-right">
+        	<div class="box">
+            <div class="hd"><span>工程案例</span></div>
+            <div class="bd">
+            	<ul class="list-photo">
+            		<volist name="indexInfo1['4']" id="val" >
+            		<li><a href="{$val.url}"><img alt="" width="150" height="90" src="{$val.img}"><span>{$val.title}</span></a></li>
+            		</volist>
+
+            	</ul>
+            </div>
+          </div>
+        </div>
+        <i class="clear"></i>
+       </div>
+    </div>
+
+
+<script type="text/javascript" src="__ROOT__/statics/myweb/js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+
+	function slide_player(slide_id,t){
+		var n = 0;
+		var O_slide = $("#" + slide_id);
+		var O_list = O_slide.find(".slide-photo");
+		var O_title = O_slide.find(".slide-info");
+		var O_trigger = O_slide.find(".triggers-wrap");
+		var btn_p = O_slide.find(".prev");
+		var btn_n = O_slide.find(".next");
+		var l = O_list.find("li").length;
+		var html = '';
+		for(var i = 1; i <= l; i++){
+			if(i == 1){
+				html += '<i class="current"></i>';
+			}
+			else{
+				html += '<i></i>';
+			}
+		}
+		O_trigger.html(html);	//渲染数字触发器
+		
+		O_slide.hover(function(){
+			btn_p.show();
+			btn_n.show();
+			clearInterval(loopTime);
+			},
+			function(){
+				btn_p.hide();
+				btn_n.hide();
+				loopTime = setInterval(function(){
+					slidePlayer(n);
+					n++;
+					if(n == l){
+						n = 0;
+					}},t);
+		});
+		btn_p.click(function(){
+			n--;
+			if(n < 0){n = l - 1;}
+			slidePlayer(n);
+		});
+		btn_n.click(function(){
+			n++;
+			if(n == l){n = 0;}		
+			slidePlayer(n);
+		});
+		var loopTime = setInterval(function(){	//循环切换
+			slidePlayer(n);
+			n++;
+			if(n == l){
+				n = 0;
+			}
+		},t);
+
+		O_trigger.find("i").click(function(){	//鼠标事件
+			index = O_trigger.find("i").index(this);
+			slidePlayer(n);
+		});
+		function slidePlayer(n){	//定义幻灯播放效果
+			O_list.find("li")
+			.eq(n).show()
+			.siblings().hide();
+			O_title.find("li")
+			.eq(n).show()
+			.siblings().hide();
+			O_trigger.find("i")
+			.eq(n).addClass("current")
+			.siblings().removeClass("current");
+		}
+	}
+	
+	slide_player("slide",4000);
+</script>
+
+
+<include file="public:footer"/>
