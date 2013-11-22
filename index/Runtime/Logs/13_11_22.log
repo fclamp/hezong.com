@@ -8598,3 +8598,45 @@
 [ 2013-11-22T17:35:51+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_end ] --START--
 [ 2013-11-22T17:35:51+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run ShowPageTrace Behavior [ RunTime:0.000624s ]
 [ 2013-11-22T17:35:51+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_end ] --END-- [ RunTime:0.000722s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ app_begin ] --START--
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run ReadHtmlCache Behavior [ RunTime:0.000983s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ app_begin ] --END-- [ RunTime:0.001105s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | NOTIC: [2] include(D:\work\hezong.com\hezong.com/includes/lib_common.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory baseAction.class.php 第 22 行.
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | NOTIC: [2] include() [<a href='function.include'>function.include</a>]: Failed opening 'D:\work\hezong.com\hezong.com/includes/lib_common.php' for inclusion (include_path='.;D:\install\xampp\php\PEAR') baseAction.class.php 第 22 行.
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SHOW COLUMNS FROM `cms_article` [ RunTime:0.004542s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SHOW COLUMNS FROM `cms_article_data` [ RunTime:0.003145s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SHOW COLUMNS FROM `cms_link` [ RunTime:0.003757s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`catid`,`name`,`url`,`exten_catid` FROM `cms_link` WHERE status=1 ORDER BY sort desc,id desc  [ RunTime:0.000466s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SHOW COLUMNS FROM `cms_setting` [ RunTime:0.003013s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT * FROM `cms_setting`  [ RunTime:0.000294s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SHOW COLUMNS FROM `cms_index_data` [ RunTime:0.003351s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SHOW COLUMNS FROM `cms_category` [ RunTime:0.003134s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid`,`type` FROM `cms_category` WHERE pid=0 and `status`=1 ORDER BY `sort` DESC,id DESC  [ RunTime:0.000403s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid`,`type` FROM `cms_category` WHERE pid=15 and `status`=1 ORDER BY `sort` DESC,id DESC  [ RunTime:0.000331s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid`,`type` FROM `cms_category` WHERE pid=16 and `status`=1 ORDER BY `sort` DESC,id DESC  [ RunTime:0.000365s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid`,`type` FROM `cms_category` WHERE pid=17 and `status`=1 ORDER BY `sort` DESC,id DESC  [ RunTime:0.000268s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid`,`type` FROM `cms_category` WHERE pid=18 and `status`=1 ORDER BY `sort` DESC,id DESC  [ RunTime:0.000246s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid`,`type` FROM `cms_category` WHERE pid=19 and `status`=1 ORDER BY `sort` DESC,id DESC  [ RunTime:0.000240s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid`,`type` FROM `cms_category` WHERE pid=20 and `status`=1 ORDER BY `sort` DESC,id DESC  [ RunTime:0.000244s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SHOW COLUMNS FROM `cms_category` [ RunTime:0.003244s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid` FROM `cms_category` WHERE id=15 and `status`=1 LIMIT 1   [ RunTime:0.000302s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: SELECT `id`,`name`,`pid`,`type` FROM `cms_category` WHERE pid=15 and `status`=1 ORDER BY `sort` DESC,id DESC  [ RunTime:0.000280s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: select count(id) as num from cms_article where status=1 and catid in(15)  [ RunTime:0.000253s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | SQL: select id,catid,title,push_time,abst,img,author,attachment from cms_article where status=1 and catid in(15)  order by sort desc,push_time desc limit 0,25  [ RunTime:0.000559s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_template ] --START--
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run LocationTemplate Behavior [ RunTime:0.001077s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_template ] --END-- [ RunTime:0.001185s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_parse ] --START--
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | NOTIC: [8] Undefined variable: is_index f7a2e109ddc583b7598a8979df509f9d.php 第 29 行.
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | NOTIC: [8] Undefined index: id f7a2e109ddc583b7598a8979df509f9d.php 第 30 行.
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run ParseTemplate Behavior [ RunTime:0.014244s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_parse ] --END-- [ RunTime:0.014352s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_filter ] --START--
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run ContentReplace Behavior [ RunTime:0.000643s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run TokenBuild Behavior [ RunTime:0.000943s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run WriteHtmlCache Behavior [ RunTime:0.000583s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run ShowRuntime Behavior [ RunTime:0.000766s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_filter ] --END-- [ RunTime:0.003239s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_end ] --START--
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Run ShowPageTrace Behavior [ RunTime:0.000649s ]
+[ 2013-11-22T17:38:12+08:00 ] /?a=lists&m=index&cateid=15 | INFO: Tag[ view_end ] --END-- [ RunTime:0.000750s ]
