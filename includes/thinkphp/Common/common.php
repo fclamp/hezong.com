@@ -24,6 +24,22 @@
 
 /**
  * 
+ * 获取文章里的所有图片地址
+ * @param $c 文章内容
+ */
+function get_c_imgs($c)
+{
+	$imgs = array ();
+	if (preg_match_all ( "/(src)=([\"|']?)([^ \"'>]+\.(gif|jpg|jpeg|bmp|png))\\2/i", $c, $matches ))
+	{
+		return $matches [3];
+	}
+	return $imgs;
+}
+
+
+/**
+ * 
  * 按字符长度截取
  * @param unknown_type $str
  * @param unknown_type $len
@@ -65,7 +81,6 @@ function get_avalinks($fields='*')
 	$array = array('tLinks'=>array(),'bLinks'=>array(),'flinks'=>array());
 	$mode = D ( 'link' );
 	$res = $mode->where ('status=1')->field($fields)->order('sort desc,id desc')->select();
-	
 	foreach ($res as $v)
 	{
 		//解析出a,m

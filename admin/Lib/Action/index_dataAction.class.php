@@ -250,6 +250,7 @@ class index_dataAction extends baseAction
 			$data['catid'] = id($data['catid']);
 					
 			//上传图片
+			$old_img = '';
 			if ($_FILES ['img'] ['name'] != '')
 			{  
 				//获取相应的大小
@@ -258,6 +259,9 @@ class index_dataAction extends baseAction
 				if (is_array($upload_list) and isset($upload_list['img_url']))
 				{
 					$data ['img'] = $upload_list ['img_url'];
+					
+					$old_img = $article_info['img'];
+					
 				}else
 				{
 					$this->error ( $upload_list );
@@ -286,6 +290,10 @@ class index_dataAction extends baseAction
 			
 			//更新主表
 			$result = $this->index_mode->where ( 'id=' . $article_id )->save ( $data );
+			
+			
+			//删除旧图片
+			$this->delete_old_img($old_img);			
 			
 			//日志
 			$this->admin_log ( '成功修改首页内容信息：ID'.$article_id );				
@@ -337,8 +345,23 @@ class index_dataAction extends baseAction
 		$ids_array = $ids;
 		$ids = implode ( ',', $ids );
 		
+		
+		//获取出文章主图片
+		$all_imgs = array ();
+		$tpl = $this->index_mode->field ( '`img`' )->where ( "`id` in($ids)" )->select ();
+		foreach ( $tpl as $img )
+		{
+			$all_imgs [$img ['img']] = $img ['img'];
+		}
+		
 		//删除信息
 		$this->index_mode->where ( "`id` in($ids)" )->delete ();
+		
+		//删除旧图片
+		foreach ($all_imgs as $img)
+		{
+			$this->delete_old_img($img);
+		}
 		
 		
 		//日志

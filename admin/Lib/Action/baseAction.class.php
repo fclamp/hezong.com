@@ -357,6 +357,75 @@ class baseAction extends Action
 	
 	/**
 	 * 
+	 * 删除旧图片
+	 * @param unknown_type $old_img
+	 */
+	public function delete_old_img($old_img)
+	{
+		if(empty($old_img))
+		{
+			return False;
+		}
+		
+		
+		$old_img_ext = end ( explode ( '.', $old_img ) );
+		$uploadConfig = C('UPLOAD');
+		if(!isset($uploadConfig['imgAllow']) or !is_array($uploadConfig['imgAllow']))
+		{
+			return False;
+		}
+		
+		if (in_array ( $old_img_ext, $uploadConfig['imgAllow'] ))
+		{
+			if($this->ftp_upload_img)
+			{
+				$ftp = ftp ();
+				
+				$old_img_path = parse_url ( $old_img );
+				if (! empty ( $old_img_path ['path'] ))
+				{
+					//删除原图
+					$ftp->f_delete ( $old_img_path ['path'] );
+					
+					//删除小图
+					$paths = explode ( '/', $old_img_path ['path'] );
+					$old_img_name = end ( $paths );
+					$thumb_path = str_replace ( $old_img_name, '', $old_img_path ['path'] );
+					$old_img_name = explode ( '.', $old_img_name );
+					
+					$old_list_img_path = $thumb_path . reset ( $old_img_name ) . $this->thumb_img_tag . '.' . $old_img_ext;
+					$ftp->f_delete ( $old_list_img_path );
+				}				
+			}else
+			{
+				$paths = parse_url($old_img);
+				if(empty($paths['path']))
+				{
+					return False;
+				}
+				//删除原图
+				if(file_exists(ROOT_PATH.$paths['path']))
+				{
+					unlink(ROOT_PATH.$paths['path']);
+				}
+				
+				//删除小图
+				$lit = explode('.',$paths['path']);
+				$lit_img = $lit[0].$this->thumb_img_tag.'.'.$lit[1];
+				if(file_exists($lit_img))
+				{
+					unlink($lit_img);
+				}
+				
+			}			
+		}
+		return True;
+	}	
+	
+	
+	
+	/**
+	 * 
 	 * 通用的添加操作
 	 */
 	public function base_add()

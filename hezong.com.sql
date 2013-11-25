@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2013-11-25 14:00:07
+Date: 2013-11-25 17:09:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,7 +26,7 @@ CREATE TABLE `cms_access` (
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`) USING BTREE,
   KEY `node_id` (`node_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4483 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4535 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_access
@@ -89,57 +89,58 @@ INSERT INTO `cms_access` VALUES ('2', '288', '3295');
 INSERT INTO `cms_access` VALUES ('2', '290', '3296');
 INSERT INTO `cms_access` VALUES ('2', '296', '3297');
 INSERT INTO `cms_access` VALUES ('2', '297', '3298');
-INSERT INTO `cms_access` VALUES ('1', '6', '4432');
-INSERT INTO `cms_access` VALUES ('1', '7', '4433');
-INSERT INTO `cms_access` VALUES ('1', '8', '4434');
-INSERT INTO `cms_access` VALUES ('1', '9', '4435');
-INSERT INTO `cms_access` VALUES ('1', '10', '4436');
-INSERT INTO `cms_access` VALUES ('1', '11', '4437');
-INSERT INTO `cms_access` VALUES ('1', '298', '4438');
-INSERT INTO `cms_access` VALUES ('1', '12', '4439');
-INSERT INTO `cms_access` VALUES ('1', '13', '4440');
-INSERT INTO `cms_access` VALUES ('1', '14', '4441');
-INSERT INTO `cms_access` VALUES ('1', '15', '4442');
-INSERT INTO `cms_access` VALUES ('1', '16', '4443');
-INSERT INTO `cms_access` VALUES ('1', '270', '4444');
-INSERT INTO `cms_access` VALUES ('1', '50', '4445');
-INSERT INTO `cms_access` VALUES ('1', '51', '4446');
-INSERT INTO `cms_access` VALUES ('1', '317', '4447');
-INSERT INTO `cms_access` VALUES ('1', '177', '4448');
-INSERT INTO `cms_access` VALUES ('1', '178', '4449');
-INSERT INTO `cms_access` VALUES ('1', '316', '4450');
-INSERT INTO `cms_access` VALUES ('1', '212', '4451');
-INSERT INTO `cms_access` VALUES ('1', '213', '4452');
-INSERT INTO `cms_access` VALUES ('1', '271', '4453');
-INSERT INTO `cms_access` VALUES ('1', '284', '4454');
-INSERT INTO `cms_access` VALUES ('1', '274', '4455');
-INSERT INTO `cms_access` VALUES ('1', '275', '4456');
-INSERT INTO `cms_access` VALUES ('1', '276', '4457');
-INSERT INTO `cms_access` VALUES ('1', '277', '4458');
-INSERT INTO `cms_access` VALUES ('1', '278', '4459');
-INSERT INTO `cms_access` VALUES ('1', '285', '4460');
-INSERT INTO `cms_access` VALUES ('1', '286', '4461');
-INSERT INTO `cms_access` VALUES ('1', '287', '4462');
-INSERT INTO `cms_access` VALUES ('1', '288', '4463');
-INSERT INTO `cms_access` VALUES ('1', '290', '4464');
-INSERT INTO `cms_access` VALUES ('1', '299', '4465');
-INSERT INTO `cms_access` VALUES ('1', '300', '4466');
-INSERT INTO `cms_access` VALUES ('1', '301', '4467');
-INSERT INTO `cms_access` VALUES ('1', '302', '4468');
-INSERT INTO `cms_access` VALUES ('1', '303', '4469');
-INSERT INTO `cms_access` VALUES ('1', '304', '4470');
-INSERT INTO `cms_access` VALUES ('1', '305', '4471');
-INSERT INTO `cms_access` VALUES ('1', '306', '4472');
-INSERT INTO `cms_access` VALUES ('1', '307', '4473');
-INSERT INTO `cms_access` VALUES ('1', '308', '4474');
-INSERT INTO `cms_access` VALUES ('1', '309', '4475');
-INSERT INTO `cms_access` VALUES ('1', '310', '4476');
-INSERT INTO `cms_access` VALUES ('1', '311', '4477');
-INSERT INTO `cms_access` VALUES ('1', '318', '4478');
-INSERT INTO `cms_access` VALUES ('1', '312', '4479');
-INSERT INTO `cms_access` VALUES ('1', '313', '4480');
-INSERT INTO `cms_access` VALUES ('1', '314', '4481');
-INSERT INTO `cms_access` VALUES ('1', '315', '4482');
+INSERT INTO `cms_access` VALUES ('1', '6', '4483');
+INSERT INTO `cms_access` VALUES ('1', '7', '4484');
+INSERT INTO `cms_access` VALUES ('1', '8', '4485');
+INSERT INTO `cms_access` VALUES ('1', '9', '4486');
+INSERT INTO `cms_access` VALUES ('1', '10', '4487');
+INSERT INTO `cms_access` VALUES ('1', '11', '4488');
+INSERT INTO `cms_access` VALUES ('1', '298', '4489');
+INSERT INTO `cms_access` VALUES ('1', '12', '4490');
+INSERT INTO `cms_access` VALUES ('1', '13', '4491');
+INSERT INTO `cms_access` VALUES ('1', '14', '4492');
+INSERT INTO `cms_access` VALUES ('1', '15', '4493');
+INSERT INTO `cms_access` VALUES ('1', '16', '4494');
+INSERT INTO `cms_access` VALUES ('1', '270', '4495');
+INSERT INTO `cms_access` VALUES ('1', '50', '4496');
+INSERT INTO `cms_access` VALUES ('1', '51', '4497');
+INSERT INTO `cms_access` VALUES ('1', '317', '4498');
+INSERT INTO `cms_access` VALUES ('1', '177', '4499');
+INSERT INTO `cms_access` VALUES ('1', '178', '4500');
+INSERT INTO `cms_access` VALUES ('1', '316', '4501');
+INSERT INTO `cms_access` VALUES ('1', '212', '4502');
+INSERT INTO `cms_access` VALUES ('1', '213', '4503');
+INSERT INTO `cms_access` VALUES ('1', '271', '4504');
+INSERT INTO `cms_access` VALUES ('1', '284', '4505');
+INSERT INTO `cms_access` VALUES ('1', '274', '4506');
+INSERT INTO `cms_access` VALUES ('1', '275', '4507');
+INSERT INTO `cms_access` VALUES ('1', '276', '4508');
+INSERT INTO `cms_access` VALUES ('1', '277', '4509');
+INSERT INTO `cms_access` VALUES ('1', '278', '4510');
+INSERT INTO `cms_access` VALUES ('1', '285', '4511');
+INSERT INTO `cms_access` VALUES ('1', '286', '4512');
+INSERT INTO `cms_access` VALUES ('1', '287', '4513');
+INSERT INTO `cms_access` VALUES ('1', '288', '4514');
+INSERT INTO `cms_access` VALUES ('1', '290', '4515');
+INSERT INTO `cms_access` VALUES ('1', '319', '4516');
+INSERT INTO `cms_access` VALUES ('1', '299', '4517');
+INSERT INTO `cms_access` VALUES ('1', '300', '4518');
+INSERT INTO `cms_access` VALUES ('1', '301', '4519');
+INSERT INTO `cms_access` VALUES ('1', '302', '4520');
+INSERT INTO `cms_access` VALUES ('1', '303', '4521');
+INSERT INTO `cms_access` VALUES ('1', '304', '4522');
+INSERT INTO `cms_access` VALUES ('1', '305', '4523');
+INSERT INTO `cms_access` VALUES ('1', '306', '4524');
+INSERT INTO `cms_access` VALUES ('1', '307', '4525');
+INSERT INTO `cms_access` VALUES ('1', '308', '4526');
+INSERT INTO `cms_access` VALUES ('1', '309', '4527');
+INSERT INTO `cms_access` VALUES ('1', '310', '4528');
+INSERT INTO `cms_access` VALUES ('1', '311', '4529');
+INSERT INTO `cms_access` VALUES ('1', '318', '4530');
+INSERT INTO `cms_access` VALUES ('1', '312', '4531');
+INSERT INTO `cms_access` VALUES ('1', '313', '4532');
+INSERT INTO `cms_access` VALUES ('1', '314', '4533');
+INSERT INTO `cms_access` VALUES ('1', '315', '4534');
 
 -- ----------------------------
 -- Table structure for `cms_admin`
@@ -163,7 +164,7 @@ CREATE TABLE `cms_admin` (
 -- ----------------------------
 -- Records of cms_admin
 -- ----------------------------
-INSERT INTO `cms_admin` VALUES ('1', 'admincms', 'e10adc3949ba59abbe56e057f20f883e', '', '1357372162', '1385358372', '192.168.2.15', '1', '1');
+INSERT INTO `cms_admin` VALUES ('1', 'admincms', 'e10adc3949ba59abbe56e057f20f883e', '', '1357372162', '1385370494', '192.168.2.15', '1', '1');
 INSERT INTO `cms_admin` VALUES ('2', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '', '1384760595', '1385358436', '192.168.2.15', '1', '1');
 
 -- ----------------------------
@@ -262,7 +263,7 @@ CREATE TABLE `cms_category_access` (
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`) USING BTREE,
   KEY `node_id` (`node_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3136 DEFAULT CHARSET=utf8 COMMENT='栏目权限访问表';
+) ENGINE=InnoDB AUTO_INCREMENT=3142 DEFAULT CHARSET=utf8 COMMENT='栏目权限访问表';
 
 -- ----------------------------
 -- Records of cms_category_access
@@ -626,12 +627,12 @@ INSERT INTO `cms_category_access` VALUES ('2', '7', '2957', '2');
 INSERT INTO `cms_category_access` VALUES ('2', '8', '2958', '2');
 INSERT INTO `cms_category_access` VALUES ('2', '9', '2959', '2');
 INSERT INTO `cms_category_access` VALUES ('2', '10', '2960', '2');
-INSERT INTO `cms_category_access` VALUES ('1', '15', '3130', '1');
-INSERT INTO `cms_category_access` VALUES ('1', '16', '3131', '1');
-INSERT INTO `cms_category_access` VALUES ('1', '17', '3132', '1');
-INSERT INTO `cms_category_access` VALUES ('1', '18', '3133', '1');
-INSERT INTO `cms_category_access` VALUES ('1', '19', '3134', '1');
-INSERT INTO `cms_category_access` VALUES ('1', '20', '3135', '1');
+INSERT INTO `cms_category_access` VALUES ('1', '15', '3136', '1');
+INSERT INTO `cms_category_access` VALUES ('1', '16', '3137', '1');
+INSERT INTO `cms_category_access` VALUES ('1', '17', '3138', '1');
+INSERT INTO `cms_category_access` VALUES ('1', '18', '3139', '1');
+INSERT INTO `cms_category_access` VALUES ('1', '19', '3140', '1');
+INSERT INTO `cms_category_access` VALUES ('1', '20', '3141', '1');
 
 -- ----------------------------
 -- Table structure for `cms_find_password_log`
@@ -755,7 +756,7 @@ CREATE TABLE `cms_logs` (
   PRIMARY KEY (`id`),
   KEY `u` (`uname`) USING BTREE,
   KEY `t` (`add_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_logs
@@ -769,6 +770,10 @@ INSERT INTO `cms_logs` VALUES ('6', '1', 'admincms', '1385358417', '192.168.2.15
 INSERT INTO `cms_logs` VALUES ('7', '2', 'admin', '1385358436', '192.168.2.15', '成功登录后台！');
 INSERT INTO `cms_logs` VALUES ('8', '2', 'admin', '1385359091', '192.168.2.15', '首页内容 改变状态信息，名称:，ID:13');
 INSERT INTO `cms_logs` VALUES ('9', '2', 'admin', '1385359113', '192.168.2.15', '成功添加文章：ID35');
+INSERT INTO `cms_logs` VALUES ('10', '1', 'admincms', '1385370494', '192.168.2.15', '成功登录后台！');
+INSERT INTO `cms_logs` VALUES ('11', '1', 'admincms', '1385370518', '192.168.2.15', '菜单管理 添加信息，名称:内容管理，ID:319');
+INSERT INTO `cms_logs` VALUES ('12', '1', 'admincms', '1385370526', '192.168.2.15', '编辑了角色 : 管理员  的权限信息，ID：1');
+INSERT INTO `cms_logs` VALUES ('13', '1', 'admincms', '1385370530', '192.168.2.15', '退出后台！');
 
 -- ----------------------------
 -- Table structure for `cms_node`
@@ -794,7 +799,7 @@ CREATE TABLE `cms_node` (
   KEY `group_id` (`group_id`) USING BTREE,
   KEY `sort` (`sort`) USING BTREE,
   KEY `action` (`action`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=319 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=320 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cms_node
@@ -860,6 +865,7 @@ INSERT INTO `cms_node` VALUES ('315', 'index_data', '首页内容', 'delete', '�
 INSERT INTO `cms_node` VALUES ('316', 'cache', '缓存管理', 'index', '缓存管理', '', '1', '', '0', '2', '1', '0', '0');
 INSERT INTO `cms_node` VALUES ('317', 'setting', '设置', 'edit', '更新设置', '', '1', '', '0', '2', '36', '0', '0');
 INSERT INTO `cms_node` VALUES ('318', 'index_data', '首页内容', '', '', '', '1', '', '0', '0', '38', '0', '0');
+INSERT INTO `cms_node` VALUES ('319', 'article', '内容管理', 'article_upload_img', '编辑器图片上传', '', '1', '', '0', '2', '37', '0', '0');
 
 -- ----------------------------
 -- Table structure for `cms_role`

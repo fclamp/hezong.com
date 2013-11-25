@@ -81,7 +81,7 @@
 				<a class="blue" href="{$val['url']}" target="_blank">查看</a>
 					
 				<if condition="is_access('index_data','edit') eq '1'">	
-				<a class="blue" href="javascript:edit({$val.id},'{$val.title}')">编辑</a>
+				&nbsp;|&nbsp;<a class="blue" href="javascript:edit({$val.id},'{$val.title}')">编辑</a>
 				</if>
 			</td>
         </volist>

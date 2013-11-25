@@ -325,12 +325,15 @@ class articleAction extends baseAction
 			}
 			
 			//上传图片
+			$old_img = '';
 			if ($_FILES ['img'] ['name'] != '')
 			{
 				$upload_list = $this->upload_img ( $this->thumb_w, $this->thumb_h );
 				if (is_array($upload_list) and isset($upload_list['img_url']))
 				{
 					$data ['img'] = $upload_list ['img_url'];
+					$old_img = $article_info['img'];
+					
 				}else
 				{
 					$this->error ( $upload_list );
@@ -388,6 +391,9 @@ class articleAction extends baseAction
 			{
 				unlink(ROOT_PATH.$oldAttachment);
 			}
+
+			//删除旧图片
+			$this->delete_old_img($old_img);			
 			
 			//日志
 			$this->admin_log ( '成功修改文章：ID'.$article_id );				
@@ -445,17 +451,31 @@ class articleAction extends baseAction
 		$ids_array = $ids;
 		$ids = implode ( ',', $ids );
 		
-		$a_info = $this->article_mode->where("`id` in($ids)")->field('id,attachment')->select();
+		$a_info = $this->article_mode->where("`id` in($ids)")->field('id,attachment,img')->select();
 		if(empty($a_info))
 		{
 			$this->success ( L ( 'operation_success' ) );
 		}
-		$attachs = array();
+		$allimgs = $attachs = array();
 		foreach ($a_info as $a)
 		{
 			$attachs[$a['attachment']] = $a['attachment'];
+			$allimgs[$a['img']] = $a['img'];
 		}
 		$a_info = $a =NULL;
+		
+		$tpl = $this->article_data_mode->where("article_id in($ids)")->field('info')->select();
+		foreach ($tpl as $t)
+		{
+			$imgs = get_c_imgs ($t['info']);
+			foreach ( $imgs as $img )
+			{
+				$allimgs [$img] = $img;
+			}			
+		}
+		$tpl = NULL;
+		
+		
 		
 		//删除文章
 		$this->article_mode->where ( "`id` in($ids)" )->delete ();
@@ -471,10 +491,15 @@ class articleAction extends baseAction
 			}
 		}
 		
+		//删除图片
+		foreach ($allimgs as $img)
+		{
+			$this->delete_old_img($img);
+		}
+		
 		//日志
 		$this->admin_log ( '内容管理删除文章：ID'.$ids);	
 		
-		$this->success ( L ( 'operation_success' ) );
 	}
 	
 	/**
