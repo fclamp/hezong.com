@@ -1,3 +1,5 @@
 .buildpath
 .project
 .settings
+./index/Runtime/
+./admin/Runtime/

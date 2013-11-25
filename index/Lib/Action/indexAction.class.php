@@ -31,7 +31,7 @@ class indexAction extends baseAction
 		
 		$list = array();
 		//1幻灯片;2企业概况;3企业动态;4工程案例'
-		$tpl = $this->index_mode->where('status=1 and catid in(1,2,3,4)')->order('sort desc,id desc')->select();
+		$tpl = $this->index_mode->where('status=1 and catid in(1,2,3)')->order('sort desc,id desc')->select();
 		
 		foreach ($tpl as $v)
 		{
@@ -46,10 +46,39 @@ class indexAction extends baseAction
 			{
 				$v['title'] = my_sub_char($v['title'],26);
 			}
-			
-			
-			
 			$list[$v['catid']][] = $v;
+		}
+		
+		
+		//工程案例 4
+		$tpl = $this->index_mode->where('status=1 and catid =4')->order('sort desc,id desc')->select();
+		if(!empty($tpl))
+		{
+			//从首页内容模型获取
+			foreach ($tpl as $v)
+			{
+				$v['img'] = empty($v['img']) ? $this->default_img : $v['img'];
+				
+				$v['title'] = my_sub_char($v['title'],26);
+				
+				$list[4][] = $v;
+			}			
+		}else
+		{
+			
+			//从内容模型里获取
+			$catid = 18;
+			$tpl = $this->article_mode->where("status=1 and catid =$catid")->order('sort desc,id desc')->limit(4)->select();
+			foreach ($tpl as $v)
+			{
+				$v['img'] = empty($v['img']) ? $this->default_img : $v['img'];
+				
+				$v['title'] = my_sub_char($v['title'],26);
+				
+				$v['url'] = '/?a=showPage&m=index&id='.$v['id'];
+				
+				$list[4][] = $v;
+			}			
 		}
 		
 		$this->assign('indexInfo1',$list);
